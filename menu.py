@@ -1,4 +1,4 @@
-ffrom tkinter import*
+from tkinter import*
 import sys
 import os
 
@@ -20,6 +20,7 @@ root.title("Anmol's Library System")
 
 searchButton = Button(root, text = "Search", command = search)
 searchButton.place(x = 100, y = 75)
+
 
 checkoutButton = Button(root, text = "Checkout", command = checkout)
 checkoutButton.place(x = 175, y = 75)

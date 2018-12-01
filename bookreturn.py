@@ -2,6 +2,7 @@ import os
 import datetime
 f = open("Database.txt", "r")
 y = open("Logfile.txt", "a")
+w = open("Weedingfile.txt", "r")
 
 tdelta = datetime.timedelta(days = 21)
 tday = datetime.date.today()
@@ -13,6 +14,7 @@ while True:
     if 999<inputID<10000:
      a = input("Which book would you like to return? Please enter the id number:")
      databaseLines = f.readlines()
+     weedingLines = w.readlines()
      for i in range (1,24):
         currentLine = databaseLines[i]
         bookID = currentLine[0:2]
@@ -23,14 +25,17 @@ while True:
                 print(databaseLines[0])
                 print(databaseLines[i])
                 databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tY\t\t-\n'
+                weedingLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\t'+today+'\n'
                 print("The book has been successfully been returned")
                 f.close()
+                w.close()
                 f = open("Database.txt" , "w")
                 f.writelines(databaseLines)
+                w = open("Weedingfile.txt", "w")
+                w.writelines(weedingLines)
                 break
             else:
                 print("This book is still available. Please try again")
                 break
     f.close()
     w.close()
-
