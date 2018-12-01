@@ -4,6 +4,7 @@ import os
 ''' imported the date time module so that the Due column in the text file can be updated.'''
 f = open("Database.txt" , "r")
 y = open("Logfile.txt" , "a")
+w = open("Weedingfile.txt", "r")
 ''' The code below is for the dates of today and the future so that it can be updated on the database and the logfile'''
 tdelta = datetime.timedelta(days = 21)
 tday = datetime.date.today()
@@ -29,6 +30,7 @@ while True:
  if 999<inputID<10000:
     a = input("Which book would you like to checkout or press 'q' to return to menu? Please enter the id number:")
     databaseLines = f.readlines()
+    weedingLines = w.readlines()
     for i in range (1,24):
         currentLine = databaseLines[i]
         bookID = currentLine[0:2]
@@ -39,11 +41,15 @@ while True:
                 print(databaseLines[0])
                 print(databaseLines[i])
                 databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +due_date+ '\n'
+                weedingLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\t'+today+'\n'
                 print("The book is due on "+due_date)
                 f.close()
                 f = open("Database.txt" , "w")
                 f.writelines(databaseLines)
-                y.write('\n'+bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +today+ '\t\t%d\n' % (inputID))                
+                y.write('\n'+bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +today+ '\t\t%d\n' % (inputID))
+                w.close()
+                w = open("Weedingfile.txt", "w")
+                w.writelines(weedingLines)
                 break
             else:
                 print("That book has been taken out by another user. Please try again later...")
