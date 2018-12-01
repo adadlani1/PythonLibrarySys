@@ -29,17 +29,9 @@ line21 = f.readline()
 line22 = f.readline()
 line23 = f.readline()
 line24 = f.readline()
-'''filepath = "Database.txt"
-with open(filepath) as f:  
-   line = f.readline()
-   cnt = 1
-   while line:
-       print("Line {}: {}".format(cnt, line.strip()))
-       line = f.readline()
-       cnt += 1'''
 
 def menu():
-    os.system('menu2.py')
+    os.system('menu.py')
 
 def search():
     n = input("Which book are you looking for? Please enter the book name or ID number.\n")
@@ -120,6 +112,8 @@ search()
 '''Once a book has been looked up, the code asks the user whether
 they would like to lookup the status of another book or go back to the main menu.
 Typing "menu" brings up another GUI window.'''
+
+
 while True:
     x = input("What would you like to do now?\nType:\n'search' to find another book\n'menu' to return to the main menu\n").strip()
     if x == "search":
