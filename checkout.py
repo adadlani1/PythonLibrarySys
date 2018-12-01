@@ -27,7 +27,7 @@ while True:
  f = open("Database.txt", "r")
  inputID = int(input("Please enter your user id:"))
  if 999<inputID<10000:
-    a = input("Which book would you like to checkout or press 'q' to return to menu? Please enter the id number:")
+    a = input("Which book would you like to checkout? Please enter the id number:")
     databaseLines = f.readlines()
     for i in range (1,24):
         currentLine = databaseLines[i]
@@ -54,7 +54,6 @@ while True:
     break
  f.close()
  y.close()
-   
 
 
  
