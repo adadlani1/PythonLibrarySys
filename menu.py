@@ -1,4 +1,4 @@
-from tkinter import*
+ffrom tkinter import*
 import sys
 import os
 
@@ -11,7 +11,7 @@ def search():
     os.system('search2.py')
 
 def returnBook():
-    os.system('return.py')
+    os.system('bookreturn.py')
 
 def weeding():
     os.system('weeding.py')
@@ -20,7 +20,6 @@ root.title("Anmol's Library System")
 
 searchButton = Button(root, text = "Search", command = search)
 searchButton.place(x = 100, y = 75)
-
 
 checkoutButton = Button(root, text = "Checkout", command = checkout)
 checkoutButton.place(x = 175, y = 75)
@@ -33,12 +32,6 @@ returnButton.place(x = 275, y = 75)
 
 weedingButton = Button(root, text = "Weeding", command = weeding)
 weedingButton.place(x = 350, y = 75)
-
-def clientExit(): #a function for the exit from the GUI
-    root.destroy()
-    sys.exit()
-
-
 
 root.geometry("525x150")
 root.mainloop()
