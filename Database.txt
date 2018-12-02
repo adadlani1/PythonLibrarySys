@@ -1,6 +1,6 @@
 ID	TITLE		AUTHOR		AVAILABLE?	DUE
 01	Book_01		Author_01	Y		-
-02	Book_02		Author_02	N		2018-12-23
+02	Book_02		Author_02	Y		-
 03	Book_03		Author_03	Y		-
 04	Book_04		Author_04	Y		-
 05	Book_05		Author_05	Y		-
@@ -17,7 +17,7 @@ ID	TITLE		AUTHOR		AVAILABLE?	DUE
 16	Book_16		Author_16	Y		-
 17	Book_17		Author_17	Y		-
 18	Book_18		Author_18	Y		-
-19	Book_19		Author_19	N		2018-12-23
+19	Book_19		Author_19	Y		-
 20	Book_20		Author_20	Y		-
 21	Book_21		Author_21	Y		-
 22	Book_22		Author_22	Y		-
