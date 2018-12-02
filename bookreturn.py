@@ -40,7 +40,7 @@ def main():
                 print(databaseLines[i])
                 databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tY\t\t-\n'
                 weedingLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\t'+today+'\n'
-                print("The book has been successfully been returned")
+                print("The book has successfully been returned")
                 databaseFileopen.close()
                 weedingFileopen.close()
                 databaseFileopen = open("Database.txt" , "w")

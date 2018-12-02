@@ -36,5 +36,3 @@ while True:
     main()
  else:
     print("What you entered is not an option. Please try again...")
-
-
