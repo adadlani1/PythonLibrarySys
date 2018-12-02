@@ -25,8 +25,8 @@ for line in range (1,24):
         print(weedingLines[0])
         print(currentLine)
     else:
-        print("Every book has been removed within the last year")
-        break
+        print( "Book_",line,"has been removed within the last year")
+        
 
 
 

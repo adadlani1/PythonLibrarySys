@@ -1,5 +1,10 @@
+# import miscellaneous operating system interfaces and datetime module
+
 import os
 import datetime
+
+#open all of the files that are going to be used in this system
+
 f = open("Database.txt", "r")
 y = open("Logfile.txt", "a")
 w = open("Weedingfile.txt", "r")
@@ -13,6 +18,9 @@ while True:
     inputID = int(input("Please enter your user ID:"))
     if 999<inputID<10000:
      a = input("Which book would you like to return? Please enter the id number:")
+     f = open("Database.txt", "r")
+     y = open("Logfile.txt", "a")
+     w = open("Weedingfile.txt", "r")
      databaseLines = f.readlines()
      weedingLines = w.readlines()
      for i in range (1,24):
@@ -21,7 +29,7 @@ while True:
         checkAvailable = databaseLines[i]
         if bookID == a:
             checkAvailable = checkAvailable[-1]
-            if checkAvailable == "0" or "1" or "2" or "3" or "4" or "5" or "-":
+            if checkAvailable == "0" or "1" or "2" or "3" or "4" or "5" :
                 print(databaseLines[0])
                 print(databaseLines[i])
                 databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tY\t\t-\n'
