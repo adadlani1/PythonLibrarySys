@@ -5,45 +5,63 @@ import datetime
 
 #open all of the files that are going to be used in this system
 
-f = open("Database.txt", "r")
-y = open("Logfile.txt", "a")
-w = open("Weedingfile.txt", "r")
+databaseFileopen = open("Database.txt", "r")
+logfileOpen = open("Logfile.txt", "a")
+weedingFileopen = open("Weedingfile.txt", "r")
+
+# the days that will be used in the system will be calculated
 
 tdelta = datetime.timedelta(days = 21)
 tday = datetime.date.today()
 today = str(tday)
 due_date= str(tday + tdelta)
 
-while True:
-    inputID = int(input("Please enter your user ID:"))
-    if 999<inputID<10000:
-     a = input("Which book would you like to return? Please enter the id number:")
-     f = open("Database.txt", "r")
-     y = open("Logfile.txt", "a")
-     w = open("Weedingfile.txt", "r")
-     databaseLines = f.readlines()
-     weedingLines = w.readlines()
+#loop asks the user to enter their user ID and if the ID is a 4 number ID, program asks which book should be returned
+def main(): 
+ inputID = int(input("Please enter your user ID:"))
+ if 999<inputID<10000:
+     returnBookIDnum = input("Which book would you like to return? Please enter the id number:")
+     databaseFileopen = open("Database.txt", "r")
+     logfileOpen = open("Logfile.txt", "a")
+     weedingFileopen = open("Weedingfile.txt", "r")
+     databaseLines = databaseFileopen.readlines()
+     weedingLines = weedingFileopen.readlines()
      for i in range (1,24):
         currentLine = databaseLines[i]
         bookID = currentLine[0:2]
         checkAvailable = databaseLines[i]
-        if bookID == a:
-            checkAvailable = checkAvailable[-1]
-            if checkAvailable == "0" or "1" or "2" or "3" or "4" or "5" :
+        if bookID == returnBookIDnum:
+            checkAvailable = checkAvailable[-2]
+            if checkAvailable == "-":
+                print("This book is still available. Please try again")
+                break
+            else:
                 print(databaseLines[0])
                 print(databaseLines[i])
                 databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tY\t\t-\n'
                 weedingLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\t'+today+'\n'
                 print("The book has been successfully been returned")
-                f.close()
-                w.close()
-                f = open("Database.txt" , "w")
-                f.writelines(databaseLines)
+                databaseFileopen.close()
+                weedingFileopen.close()
+                databaseFileopen = open("Database.txt" , "w")
+                databaseFileopen.writelines(databaseLines)
                 w = open("Weedingfile.txt", "w")
                 w.writelines(weedingLines)
                 break
-            else:
-                print("This book is still available. Please try again")
-                break
-    f.close()
-    w.close()
+
+ databaseFileopen.close()
+ weedingFileopen.close()
+
+def menu():
+    os.system('menu.py')
+
+main()
+
+secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
+while True:
+ if secondInput == "menu":
+    menu()
+ elif secondInput == "return":
+    main()
+ else:
+    print("What you entered is not an option. Please try again...")
