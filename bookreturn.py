@@ -52,11 +52,13 @@ def main():
  databaseFileopen.close()
  weedingFileopen.close()
 
+#function for the program to open the main menu
+
 def menu():
     os.system('menu.py')
-
+#function called main is run
 main()
-
+#after main(), program asks user if they would like to return another book or
 secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
 while True:
  if secondInput == "menu":
