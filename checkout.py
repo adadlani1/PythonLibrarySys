@@ -25,6 +25,7 @@ otherwise an error message is given to the user'''
 while True:
  f.close()
  f = open("Database.txt", "r")
+ y = open("Logfile.txt" , "a")
  inputID = int(input("Please enter your user id:"))
  if 999<inputID<10000:
     a = input("Which book would you like to checkout? Please enter the id number:")
@@ -34,16 +35,16 @@ while True:
         bookID = currentLine[0:2]
         checkAvailable = databaseLines[i]
         if bookID == a:
-            checkAvailable = checkAvailable[-2]
+            checkAvailable = checkAvailable[-14]
             if checkAvailable == "-":
                 print(databaseLines[0])
                 print(databaseLines[i])
-                databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +due_date+ '\n'
+                databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +due_date+ '\t'+today+'\n'
                 print("The book is due on "+due_date)
                 f.close()
                 f = open("Database.txt" , "w")
                 f.writelines(databaseLines)
-                y.write('\n'+bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +today+ '\t\t%d\n' % (inputID))                
+                y.write('\n'+bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +today+ '\t\t%d\n' % ( inputID ) )
                 break
             else:
                 print("That book has been taken out by another user. Please try again later...")

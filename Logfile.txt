@@ -10,3 +10,27 @@ ID	TITLE		AUTHOR		AVAILABLE?	DATE REMOVED		ID NUMBER
 05	Book_05		Author_05	N		2018-12-02		1255
 
 02	Book_02		Author_02	N		2018-12-02		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1000
+
+01	Book_01		Author_01	N		2018-12-04		1254
+
+09	Book_09		Author_09	N		2018-12-04		1000
+
+10	Book_10		Author_10	N		2018-12-04		1366
+
+07	Book_07		Author_07	N		2018-12-04		1478
