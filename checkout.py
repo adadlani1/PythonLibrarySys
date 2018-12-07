@@ -30,21 +30,29 @@ while True:
  if 999<inputID<10000:
     a = input("Which book would you like to checkout? Please enter the id number:")
     databaseLines = f.readlines()
-    for i in range (1,24):
-        currentLine = databaseLines[i]
-        bookID = currentLine[0:2]
-        checkAvailable = databaseLines[i]
+    numOfBooks = len(databaseLines)
+    databaseLines2 = [i.split(',') for i in databaseLines]
+    for i in range (1,numOfBooks):
+        book = databaseLines2[i]
+        bookID = book[0]
+        checkAvailable = book[3]
+        titleElement = databaseLines2[0]
         if bookID == a:
-            checkAvailable = checkAvailable[-14]
-            if checkAvailable == "-":
-                print(databaseLines[0])
-                print(databaseLines[i])
-                databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +due_date+ '\t'+today+'\n'
-                print("The book is due on "+due_date)
+            if checkAvailable == "Y":
+                book[3] = "N"
+                book[4] = inputID
+                book[6] = due_date
+                print(book)
+                databaseLines2[i] = book
+                print(databaseLines2)
+                print("The book, '"+book[1] + "', is due on "+due_date)
                 f.close()
-                f = open("Database.txt" , "w")
-                f.writelines(databaseLines)
-                y.write('\n'+bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tN\t\t' +today+ '\t\t%d\n' % ( inputID ) )
+                '''f = open("Database.txt", "w")
+                f.close'''
+                f = open("Database.txt", "a")
+                for q in databaseLines2:
+                    print(', '.join(databaseLines2[i]))
+
                 break
             else:
                 print("That book has been taken out by another user. Please try again later...")

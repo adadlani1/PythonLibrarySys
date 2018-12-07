@@ -4,17 +4,25 @@ def menu():
     os.system('menu.py')
 
 def search():
+    a = input("Which book would you like to search for? Please enter the name of the book:").strip()
     f = open("Database.txt", "r")
-    a = input("Which book would you like to search for? Please enter the id number:")
     databaseLines = f.readlines()
-    for i in range (1,24):
-        currentLine = databaseLines[i]
-        bookID = currentLine[3:10]
-        checkAvailable = databaseLines[i]
-        if bookID == a:
-            print(databaseLines[0])
-            print(databaseLines[i])
+    numOfBooks = len(databaseLines)
+    databaseLines2 = [i.split(',') for i in databaseLines]
+    for i in range (1, numOfBooks):
+
+        book = databaseLines2[i]
+        bookName = book[1]
+        info = databaseLines2[0]
+
+        if bookName == a:
+            for w in range (0,6):
+                print(info[w], "-", book[w])
+        else:
+            print("That book is not in the library")
+            break
     f.close()
+
 
 
 search()

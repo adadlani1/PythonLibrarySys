@@ -16,17 +16,20 @@ the program will print the book ID, name, author and the date last removed.'''
 def main():
     format = "%Y-%m-%d"
     weedingLines = databaseFileopen.readlines()
-    for i in range(1,24):
+    numOfBooks = len(weedingLines)
+    weedingLines2 = [i.split(',') for i in weedingLines]
+    for i in range(1, numOfBooks):
         currentLine = weedingLines[i]
-        lastReturned = currentLine[36:47]
+        print(weedingLines2)
+        book = weedingLines2[i]
+        bookName = book[1]
+        lastReturned = currentLine[-12:-2]
         datetimeLastReturned = datetime.datetime.strptime(lastReturned, format)
         datetimeLastReturned = datetimeLastReturned.date()
-        if datetimeLastReturned >= weedDate:
-            print("Here is a list of all books in the library:")
-            print(weedingLines[0])
-            print(currentLine)
+        if datetimeLastReturned <= weedDate:
+            print(bookName, "has not been removed within the last year and needs to be weeded\n")
         else:
-            print("Book_% has been removed within the last year" % i)
+            print(bookName, "has been removed within the last year")
 
 
 main()
