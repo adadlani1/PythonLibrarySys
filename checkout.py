@@ -40,19 +40,17 @@ while True:
         if bookID == a:
             if checkAvailable == "Y":
                 book[3] = "N"
-                book[4] = inputID
+                book[4] = str(inputID)
                 book[6] = due_date
-                print(book)
                 databaseLines2[i] = book
-                print(databaseLines2)
                 print("The book, '"+book[1] + "', is due on "+due_date)
                 f.close()
-                '''f = open("Database.txt", "w")
-                f.close'''
-                f = open("Database.txt", "a")
-                for q in databaseLines2:
-                    print(', '.join(databaseLines2[i]))
-
+                f = open("Database.txt", "w")
+                for line in databaseLines2:
+                    recordString = ','.join(line)
+                    f.write(recordString)
+                    joinBook = ','.join(book)
+                y.write(joinBook)
                 break
             else:
                 print("That book has been taken out by another user. Please try again later...")
