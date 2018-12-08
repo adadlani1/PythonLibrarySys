@@ -24,16 +24,9 @@ def search():
     f.close()
 
 
-
-search()
-
-
-'''Once a book has been looked up, the code asks the user whether
-they would like to lookup the status of another book or go back to the main menu.
-Typing "menu" brings up another GUI window.'''
-
-
-while True:
+if __name__ == '__main__':
+ search()
+ while True:
     x = input("What would you like to do now?\nType:\n'search' to find another book\n'menu' to return to the main menu\n").strip().lower()
     if x == "search":
         search()
@@ -41,3 +34,7 @@ while True:
         menu()
     else:
         print("What you entered is not an option. Please try again...")
+'''Once a book has been looked up, the code asks the user whether
+they would like to lookup the status of another book or go back to the main menu.
+Typing "menu" brings up another GUI window.'''
+

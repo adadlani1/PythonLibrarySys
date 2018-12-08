@@ -23,26 +23,32 @@ def main():
  if 999<inputID<10000:
      returnBookIDnum = input("Which book would you like to return? Please enter the id number:")
      databaseFileopen = open("Database.txt", "r")
-     logfileOpen = open("Logfile.txt", "a")
      databaseLines = databaseFileopen.readlines()
-     for i in range (1,24):
-        currentLine = databaseLines[i]
-        bookID = currentLine[0:2]
-        checkAvailable = databaseLines[i]
-        if bookID == returnBookIDnum:
-            checkAvailable = checkAvailable[-14]
-            if checkAvailable == "-":
-                print("This book is still available. Please try again")
-                break
-            else:
-                print(databaseLines[0])
-                print(databaseLines[i])
-                databaseLines[i] = bookID+'\tBook_'+bookID+'\t\tAuthor_'+bookID+'\tY\t\t----------\t\t'+today+"\n"
-                print("The book has successfully been returned")
-                databaseFileopen.close()
-                databaseFileopen = open("Database.txt", "w")
-                databaseFileopen.writelines(databaseLines)
-                break
+     numOfBooks = len(databaseLines)
+     databaseLines2 = [i.split(',') for i in databaseLines]
+     for i in range (1,numOfBooks):
+        book = databaseLines2[i]
+        bookID = book[0]
+        checkAvailable = book[3]
+        userID = book[4]
+        inputIDstr = str(inputID)
+        titleElement = databaseLines2[0]
+        if bookID == returnBookIDnum and inputIDstr == userID:
+            book[3] = "Y"
+            book[4] = "0000"
+            book[5] = "----------"
+            book[6] = today
+            databaseLines2[i] = book
+            databaseFileopen.close()
+            f = open("Database.txt", "w")
+            for line in databaseLines2:
+                recordString = ','.join(line)
+                f.write(recordString)
+            print("The book, '"+ book[1] + "', has been returned")
+            break
+        elif checkAvailable == "Y":
+            print("This book is still available. Please try again")
+            break
      databaseFileopen.close()
 
 
@@ -52,15 +58,15 @@ def menu():
     os.system('menu.py')
 # function called main is run
 
-main()
+if __name__ == "__main__":
 
-# after main(), program asks user if they would like to return another book or
-
-while True:
- secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
- if secondInput == "menu":
-    menu()
- elif secondInput == "return":
     main()
- else:
-    print("What you entered is not an option. Please try again...")
+
+    while True:
+     secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
+     if secondInput == "menu":
+        menu()
+     elif secondInput == "return":
+        main()
+     else:
+        print("What you entered is not an option. Please try again...")

@@ -34,14 +34,20 @@ while True:
     databaseLines2 = [i.split(',') for i in databaseLines]
     for i in range (1,numOfBooks):
         book = databaseLines2[i]
-        bookID = book[0]
+        bookName = book[1]
         checkAvailable = book[3]
         titleElement = databaseLines2[0]
-        if bookID == a:
+        if bookName == a:
             if checkAvailable == "Y":
                 book[3] = "N"
                 book[4] = str(inputID)
-                book[6] = due_date
+                book[5] = due_date
+                print(book)
+                logFile = book
+                logFile[7] = today
+                del logFile[3]
+                del logFile[5:7]
+                logFile.append('\n')
                 databaseLines2[i] = book
                 print("The book, '"+book[1] + "', is due on "+due_date)
                 f.close()
