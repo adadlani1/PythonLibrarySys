@@ -2,16 +2,21 @@ import datetime
 import os
 
 ''' imported the date time module so that the Due column in the text file can be updated.'''
-f = open("Database.txt" , "r")
-y = open("Logfile.txt" , "a")
+
+f = open("Database.txt", "r")
+y = open("Logfile.txt", "a")
+
 ''' The code below is for the dates of today and the future so that it can be updated on the database and the logfile'''
+
 tdelta = datetime.timedelta(days = 21)
 tday = datetime.date.today()
 today = str(tday)
 due_date= str(tday + tdelta)
 
+
 def backtoMenu():
     os.system('menu.py')
+
 
 '''Asks for ID number and the book that has been taken out gets its status updated.
 If a book has already been taken out by a user, an error message is retrieved telling the user that
@@ -25,20 +30,21 @@ otherwise an error message is given to the user'''
 while True:
  f.close()
  f = open("Database.txt", "r")
- y = open("Logfile.txt" , "a")
+ y = open("Logfile.txt", "a")
  inputID = int(input("Please enter your user id:"))
  if 999<inputID<10000:
-    a = input("Which book would you like to checkout? Please enter the id number:")
+    a = input("Which book would you like to checkout? Please enter the name:")
     databaseLines = f.readlines()
     numOfBooks = len(databaseLines)
     databaseLines2 = [i.split(',') for i in databaseLines]
-    for i in range (1,numOfBooks):
+    for i in range(1, numOfBooks):
         book = databaseLines2[i]
         bookName = book[1]
         checkAvailable = book[3]
         titleElement = databaseLines2[0]
         if bookName == a:
             if checkAvailable == "Y":
+                print(checkAvailable)
                 book[3] = "N"
                 book[4] = str(inputID)
                 book[5] = due_date
@@ -67,6 +73,3 @@ while True:
     break
  f.close()
  y.close()
-
-
- 
