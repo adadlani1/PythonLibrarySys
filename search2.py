@@ -9,24 +9,28 @@ def search():
     databaseLines = f.readlines()
     numOfBooks = len(databaseLines)
     databaseLines2 = [i.split(',') for i in databaseLines]
-    for i in range (1, numOfBooks):
-
+    for i in range (1, (numOfBooks)):
         book = databaseLines2[i]
         bookName = book[1]
         info = databaseLines2[0]
-
+        
         if bookName == a:
             for w in range (0,6):
                 print(info[w], "-", book[w])
-        else:
-            print("That book is not in the library")
-            break
+            
     f.close()
 
 
-if __name__ == '__main__':
- search()
- while True:
+
+search()
+
+
+'''Once a book has been looked up, the code asks the user whether
+they would like to lookup the status of another book or go back to the main menu.
+Typing "menu" brings up another GUI window.'''
+
+
+while True:
     x = input("What would you like to do now?\nType:\n'search' to find another book\n'menu' to return to the main menu\n").strip().lower()
     if x == "search":
         search()
@@ -34,7 +38,3 @@ if __name__ == '__main__':
         menu()
     else:
         print("What you entered is not an option. Please try again...")
-'''Once a book has been looked up, the code asks the user whether
-they would like to lookup the status of another book or go back to the main menu.
-Typing "menu" brings up another GUI window.'''
-
