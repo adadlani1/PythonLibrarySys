@@ -1,40 +1,47 @@
-import datetime
 import os
-# import datetime and open the weedingfile to be read
-w = open("Weedingfile.txt", "r")
+# import datetime and open the database to be read
+logFileopen = open("Logfile.txt", "r")
 
-# find the dates of today and the date in 365 days
+'''main function used to count the number of times the book ID appears in logfile
+   if book ID appears in logfile 10 or more times, the system suggests that the book is in high demand
+   however, if it is less than 10 but greater than 0, the librarian should consider removing the book
+   if the number of times the book appears is 0, it is suggested that the book should definitely be removed'''
 
-tdelta = datetime.timedelta(days = 365)
-tday = datetime.date.today()
-weedDate= (tday + tdelta)
 
-'''conversion of date in Weedingfile from str to datetime.
-allows me to compare the two dates
-if the date the book was last removed is the same or is greater than the todays date,
-the program will print the book ID, name, author and the date last removed.'''
+def main():
+    weedBook = input("Enter the book ID for information regarding weeding:")
+    # user inputs ID number of book
+    weedingLines = logFileopen.readlines()
+    # turns the text file into a list with n number of elements
+    numOfBooks = len(weedingLines)
+    # finds the number of elements in the list
+    weedingLines2 = [i.split('{') for i in weedingLines]
+    # forms a list of lists where each list is a different book
+    count = 0
+    for i in range(1, numOfBooks-1):
+        # uses the range from the 1 to the second to last element in the list of lists
+        book = weedingLines2[i]
+        # depending on what number the for loop is on, it will save the list in book variable
+        bookID = book[0]
+        # finds the first element of the list which is the book ID
+        if weedBook == bookID:
+            # input ID needs to equal the ID of the book
+            count = count + 1
+            # count is increased by 1 for every time a specific book is present
+    if count >= 10:
+        print(bookName+" is in high demand, do not remove.")
+    elif 0 < count < 10:
+        print(bookName + " is not in high demand, please consider removing it to make space for new books.")
+    elif count == 0:
+        print(weedBook+" is a book no one wants to checkout, definitely remove from the library.")
 
-format = "%Y-%m-%d"
-weedingLines = w.readlines()
-for line in range (1,24):
-    currentLine = weedingLines[line]
-    lastRemoved = currentLine[22:32]
-    datetimeLastRemoved = datetime.datetime.strptime(lastRemoved, format)
-    if datetimeLastRemoved.date() >= weedDate:
-        print("Here is a list of all of the books that have not been removed in the last year."
-              "These books should be removed to avoid overfilling of the library:")
-        print(weedingLines[0])
-        print(currentLine)
-    else:
-        print( "Book_%   has been removed within the last year" %(line))
 
-secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
 while True:
- if secondInput == "menu":
-    menu()
- elif secondInput == "return":
     main()
- else:
-    print("What you entered is not an option. Please try again...")
-
-
+    secondInput = input("If you would like to return to the menu, type 'menu'\nOr to find another book, type 'weed'").lower().strip()
+    if secondInput == "menu":
+        menu()
+    elif secondInput == "weed":
+        main()
+    else:
+        print("What you entered is not an option. Please try again...")
