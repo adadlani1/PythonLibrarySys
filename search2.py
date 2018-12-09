@@ -4,7 +4,7 @@ def menu():
     os.system('menu.py')
 
 
-'''when an input is enterred, this function searches the database text file for the name'''
+'''when an input is entered, this function searches the database text file for the name'''
 def search():
     inputName = input("Which book would you like to search for? Please enter the name of the book:").strip()
     # user types in name of book they want to look up
@@ -14,9 +14,9 @@ def search():
     # database file is turned into a list
     numOfBooks = len(databaseLines)
     # number of elements in the list is determined in order to workout how many books are in the text file
-    databaseLines2 = [i.split(',') for i in databaseLines]
+    databaseLines2 = [i.split('{') for i in databaseLines]
     # database is turned into a list of lists where each list is a different book
-    for i in range(1, (numOfBooks)):
+    for i in range(1, (numOfBooks) ):
         # for loop for searching up the book in database text file
         book = databaseLines2[i]
         # saves a list in the variable
@@ -28,7 +28,7 @@ def search():
             for columnHeader in range(0, 6):
                 print(info[columnHeader], "-", book[columnHeader])
             
-    f.close()
+    databaseFileOpen.close()
 
 
 '''Once a book has been looked up, the code asks the user whether

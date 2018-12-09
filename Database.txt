@@ -1,5 +1,5 @@
 ID{TITLE{AUTHOR{AVAILABLE?{USER{DUE{LAST RETURNED 
-01{Do Androids Dream of Electric Sheep?{Philip K. Dick{Y{0000{----------{2018-12-09{
+01{Do Androids Dream of Electric Sheep?{Philip K. Dick{N{1254{2018-12-30{2018-12-09{
 02{Everything I Never Told You{Celeste Ng{Y{0000{----------{2019-12-04{
 03{Is Everyone Hanging Out Without Me? (and Other Concerns){Mindy Kaling{Y{0000{----------{2019-12-04{
 04{The Electric Kool-Aid Acid Test{Tom Wolfe{Y{0000{----------{2018-12-04{

@@ -92,6 +92,8 @@ def main():
 
 # function for the program to open the main menu
 '''this function is to reopen the menu.py so that the librarian can perform another action'''
+
+
 def menu():
     os.system('menu.py')
 # function called main is run
@@ -101,15 +103,12 @@ def menu():
 imported'''
 
 
-if __name__ == "__main__":
-
+while True:
     main()
-
-    while True:
-     secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
-     if secondInput == "menu":
+    secondInput = input("If you would like to return to the menu, type 'menu', or return another book, type 'return':").lower().strip()
+    if secondInput == "menu":
         menu()
-     elif secondInput == "return":
+    elif secondInput == "return":
         main()
-     else:
+    else:
         print("What you entered is not an option. Please try again...")

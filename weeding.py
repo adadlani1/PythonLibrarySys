@@ -1,14 +1,15 @@
 import os
-# import datetime and open the database to be read
-logFileopen = open("Logfile.txt", "r")
-
 '''main function used to count the number of times the book ID appears in logfile
    if book ID appears in logfile 10 or more times, the system suggests that the book is in high demand
    however, if it is less than 10 but greater than 0, the librarian should consider removing the book
    if the number of times the book appears is 0, it is suggested that the book should definitely be removed'''
 
+def menu():
+    os.system('menu.py')
 
 def main():
+    logFileopen = open("Logfile.txt", "r")
+    #logfile is opened
     weedBook = input("Enter the book ID for information regarding weeding:")
     # user inputs ID number of book
     weedingLines = logFileopen.readlines()
@@ -23,6 +24,7 @@ def main():
         book = weedingLines2[i]
         # depending on what number the for loop is on, it will save the list in book variable
         bookID = book[0]
+        bookName = book[1]
         # finds the first element of the list which is the book ID
         if weedBook == bookID:
             # input ID needs to equal the ID of the book
@@ -34,11 +36,13 @@ def main():
         print(bookName + " is not in high demand, please consider removing it to make space for new books.")
     elif count == 0:
         print(weedBook+" is a book no one wants to checkout, definitely remove from the library.")
+    logFileopen.close()
 
 
 while True:
     main()
-    secondInput = input("If you would like to return to the menu, type 'menu'\nOr to find another book, type 'weed'").lower().strip()
+    secondInput = input("If you would like to return to the menu, type 'menu'"
+                        "\nOr to find another book, type 'weed'\n").lower().strip()
     if secondInput == "menu":
         menu()
     elif secondInput == "weed":

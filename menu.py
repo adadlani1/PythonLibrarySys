@@ -1,49 +1,60 @@
-from tkinter import*
-'''import search2'''
-import sys
-import os
+from tkinter import *
+
 
 root = Tk()
 
+# defined the functions that are links to the buttons
+
+
 def checkout():
-    os.system('checkout.py') #defined the functions that are links to the buttons
+    import checkout
+    checkout.main()
+
 
 def search():
-    searchWindow = Toplevel()
-    outputlistBox = Listbox(searchWindow, width = 80).pack()
-    inputTextbox = Entry(searchWindow).pack()
-    searchWindow.geometry("800x200")
-    label_1 = Label(searchWindow, text= "Please enter the name of the book")
-    label_1.place(x=0,y=164)
-    searchButton2 = Button(searchWindow, text = "Search")
-    searchButton2.place(x=480, y=164)
-    os.system('search2.py')
+    import search2
+    search2.search()
+
 
 def returnBook():
-    os.system('bookreturn.py')
+    import bookreturn
+    bookreturn.main()
+
 
 def weeding():
-    os.system('weeding.py')
+    import weeding
+    weeding.main()
 
 
-root.title("Anmol's Library System")
-root.configure(background='#808080')
+def main():
+    root.title("Anmol's Library System")
+    root.configure(background='#808080')
 
-searchButton = Button(root, text = "Search", command = search)
-searchButton.place(x = 100, y = 75)
+    searchButton = Button(root, text = "Search", command = search)
+    searchButton.place(x = 150, y = 75)
+
+    canvas = Canvas(root, width=739, height=55, bg = "black")
+    canvas.pack()
 
 
-checkoutButton = Button(root, text = "Checkout", command = checkout)
-checkoutButton.place(x = 175, y = 75)
+    line = canvas.create_line(0,0,0,0)
 
-introMsg = Label(root, text = "Hello\nWelcome to Anmol's Library System. Please chose from the following what you would like to do\nwith your book.", bg='#9932CC')
-introMsg.place(x = 0, y = 0)
+    checkoutButton = Button(root, text = "Checkout", command = checkout)
+    checkoutButton.place(x=280, y=75)
 
-returnButton = Button(root, text = "Return", command = returnBook)
-returnButton.place(x = 275, y = 75)
+    introMsg = Label(root, text="Hello,\n"
+                            "Welcome to Anmol's Library System. "
+                            "Please chose from the following what you would like to do"
+                            "\nwith your book.", bg='#9932CC', font = ("FIXEDSYS", 12))
+    introMsg.place(x = 0, y = 0)
 
-weedingButton = Button(root, text = "Weeding", command = weeding)
-weedingButton.place(x = 350, y = 75)
+    returnButton = Button(root, text = "Return", command = returnBook)
+    returnButton.place(x = 425, y = 75)
 
-root.geometry("510x150")
-root.mainloop()
+    weedingButton = Button(root, text = "Weeding", command = weeding)
+    weedingButton.place(x = 550, y = 75)
+
+    root.geometry("739x110")
+    root.mainloop()
+
+main()
