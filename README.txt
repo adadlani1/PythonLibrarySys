@@ -24,3 +24,5 @@ This weeding system is solely dependent on singular books and will not recommend
 
 ----DISCLAIMER----
 The system when searching for a book is case sensitive so the user needs to enter name of the book accurately.
+
+In bookreturn.py, if the book has not been successfully returned i.e. it is still available, it will not display any message and ask you to type menu or return to try again.
