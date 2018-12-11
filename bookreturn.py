@@ -44,10 +44,10 @@ def main():
      # data in database is turned into a list with each element being a book
      numOfBooks = len(databaseLines)
      # number of books is determined from the number of elements
-     #in the list
+     # in the list
      databaseLines2 = [novel.split('{') for novel in databaseLines]
      # data in database is changed into a list of lists where each list is
-     #equal to a book
+     # equal to a book
 
      for novel in range(1, numOfBooks):
         book = databaseLines2[novel]
@@ -58,7 +58,7 @@ def main():
 
         if bookID == returnBookIDnum and inputIDstr == userID:
             # two conditions that need to be met in order for the book to be
-            #returned. if the name and ID match with
+            # returned. if the name and ID match with
             # what has been entered, the system will proceed
             # book has to be unavailable (book[3] == N) and userID in database
             # must match ID stored in database
@@ -77,19 +77,13 @@ def main():
                 # for loop to turn the list of lists into one list
                 recordString = '{'.join(line)
                 # each list is joined together
-                databaseFileReopen.write(recordString)
+                databaseFileReOpen.write(recordString)
                 # it is written into the database file
+
             print("The book, '" + book[1] + "', has been returned")
+            databaseFileReOpen.close()
             # tells user that the book has been returned
-            break
-
-        elif checkAvailable == "Y":
-            # if the 4th element is equal to a Y then an error message is displayed to the user
-            print("This book is still available. Please try again")
-            break
-
-     databaseFileopen.close()
-     databaseFileReOpen.close()
+            break   
 
  else:
      print("That is an invalid user ID. Please try again...")

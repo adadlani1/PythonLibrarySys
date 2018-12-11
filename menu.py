@@ -143,4 +143,3 @@ weedingButton.place(x = 550, y = 75)
 root.geometry("739x110")
 #size of window
 root.mainloop()
-

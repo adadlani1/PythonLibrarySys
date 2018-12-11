@@ -19,6 +19,7 @@ due_date = str(tday + tdelta)
 
 '''function that opens the menu.py file'''
 
+
 def backtoMenu():
     os.system('menu.py')
 
@@ -40,12 +41,13 @@ def main():
         inputID = int(input("Please enter your user id:"))
 
         if 999 < inputID < 10000:
-            a = input("Which book would you like to checkout? Please enter the name:")
+            IDorName = input("Which book would you like to checkout? Please enter the name"
+                             " or the ID:")
             databaseLines = databaseFileOpen.readlines()
             numOfBooks = len(databaseLines)
-            #the number of books is determined
-            databaseLines2 = [i.split('{') for i in databaseLines]
-            databaseLines3 = [i.split('{') for i in databaseLines]
+            # the number of books is determined
+            databaseLines2 = [novel.split('{') for novel in databaseLines]
+            databaseLines3 = [novel.split('{') for novel in databaseLines]
             # the list database is turned into a list of lists for both
             # databaseLines2 is for use for the book in database
             # databaseLines3 is for use for the info in logfile
@@ -53,10 +55,11 @@ def main():
         for novel in range(1, numOfBooks):
             book = databaseLines2[novel]
             logFile = databaseLines3[novel]
+            bookID = book[0]
             bookName = book[1]
             checkAvailable = book[3]
 
-            if bookName == a:
+            if bookName == IDorName or bookID == IDorName:
 
                 if checkAvailable == "Y":
                     book[3] = "N"
@@ -68,20 +71,21 @@ def main():
                     logFile[4] = today
                     # elements of both lists are changed to become updated
                     logFile.append('\n')
-                    databaseLines2[i] = book
-                    #databaseLines2 is rewritten with the changed list
+                    databaseLines2[novel] = book
+                    # databaseLines2 is rewritten with the changed list
                     print("The book, '"+book[1] + "', is due on "+due_date)
                     databaseFileOpen.close()
-                    databaseFileOpen = open("Database.txt", "w")
+                    databaseFileReOpen = open("Database.txt", "w")
 
                     for line in databaseLines2:
                         recordString = '{'.join(line)
-                        databaseFileOpen.write(recordString)
+                        databaseFileReOpen.write(recordString)
                         joinlogFile = '{'.join(logFile)
                     logFileOpen.write(joinlogFile)
                     # databaseLines2 is a list of lists and this for loop
                     # joins it and forms a list then forms it into a string
-                    #finally it is written into the logfile and the database
+                    # finally it is written into the logfile and the database
+                    databaseFileReOpen.close()
                     break
 
                 else:
@@ -95,13 +99,14 @@ def main():
         logFileOpen.close()
         break
 
+
 '''This is the test code'''
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     while True:
         main()
         x = input("What would you like to do now?\nType:\n'checkout' to remove another book"
-                        "\n'menu' to return to the main menu\n").strip().lower()
+                  "\n'menu' to return to the main menu\n").strip().lower()
         if x == "checkout":
             main()
         elif x == "menu":
