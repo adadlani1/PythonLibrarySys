@@ -1,10 +1,11 @@
+'''Written by Anmol Dadlani
+    4th December 2018'''
+
 import datetime
 import os
 
-''' imported the date time module so that the Due column in the text file can be updated.
+''' imported the date time module so that the Due column in the text file can be updated.'''
 
-f = open("Database.txt", "r")
-y = open("Logfile.txt", "a")'''
 
 ''' The code below is for the dates of today and the future so that it can be updated on the database and the logfile'''
 
@@ -32,60 +33,78 @@ if that character is a "-", then the book can be removed and the program continu
 otherwise an error message is given to the user'''
 
 def main():
- while True:
-    f = open("Database.txt", "r")
-    y = open("Logfile.txt", "a")
-    inputID = int(input("Please enter your user id:"))
-    if 999 < inputID < 10000:
-        a = input("Which book would you like to checkout? Please enter the name:")
-        databaseLines = f.readlines()
-        numOfBooks = len(databaseLines)
-    databaseLines2 = [i.split('{') for i in databaseLines]
-    databaseLines3 = [i.split('{') for i in databaseLines]
-    for i in range(1, numOfBooks):
-        book = databaseLines2[i]
-        logFile = databaseLines3[i]
-        bookName = book[1]
-        checkAvailable = book[3]
-        titleElement = databaseLines2[0]
-        if bookName == a:
-            if checkAvailable == "Y":
-                book[3] = "N"
-                book[4] = str(inputID)
-                book[5] = due_date
-                del logFile[3]
-                del logFile[5:7]
-                logFile[3] = str(inputID)
-                logFile[4] = today
-                logFile.append('\n')
-                databaseLines2[i] = book
-                print("The book, '"+book[1] + "', is due on "+due_date)
-                f.close()
-                f = open("Database.txt", "w")
-                for line in databaseLines2:
-                    recordString = '{'.join(line)
-                    f.write(recordString)
-                    joinlogFile = '{'.join(logFile)
-                y.write(joinlogFile)
-                break
-            else:
-                print("That book has been taken out by another user. Please try again later...")
-                break
 
-    else:
-        print("That was not a valid number. Try again...")
+    while True:
+        databaseFileOpen = open("Database.txt", "r")
+        logFileOpen = open("Logfile.txt", "a")
+        inputID = int(input("Please enter your user id:"))
 
-    f.close()
-    y.close()
-    break
+        if 999 < inputID < 10000:
+            a = input("Which book would you like to checkout? Please enter the name:")
+            databaseLines = databaseFileOpen.readlines()
+            numOfBooks = len(databaseLines)
+            #the number of books is determined
+            databaseLines2 = [i.split('{') for i in databaseLines]
+            databaseLines3 = [i.split('{') for i in databaseLines]
+            # the list database is turned into a list of lists for both
+            # databaseLines2 is for use for the book in database
+            # databaseLines3 is for use for the info in logfile
 
+        for novel in range(1, numOfBooks):
+            book = databaseLines2[novel]
+            logFile = databaseLines3[novel]
+            bookName = book[1]
+            checkAvailable = book[3]
 
-while True:
-    main()
-    x = input("What would you like to do now?\nType:\n'checkout' to remove another book\n'menu' to return to the main menu\n").strip().lower()
-    if x == "checkout":
+            if bookName == a:
+
+                if checkAvailable == "Y":
+                    book[3] = "N"
+                    book[4] = str(inputID)
+                    book[5] = due_date
+                    del logFile[3]
+                    del logFile[5:7]
+                    logFile[3] = str(inputID)
+                    logFile[4] = today
+                    # elements of both lists are changed to become updated
+                    logFile.append('\n')
+                    databaseLines2[i] = book
+                    #databaseLines2 is rewritten with the changed list
+                    print("The book, '"+book[1] + "', is due on "+due_date)
+                    databaseFileOpen.close()
+                    databaseFileOpen = open("Database.txt", "w")
+
+                    for line in databaseLines2:
+                        recordString = '{'.join(line)
+                        databaseFileOpen.write(recordString)
+                        joinlogFile = '{'.join(logFile)
+                    logFileOpen.write(joinlogFile)
+                    # databaseLines2 is a list of lists and this for loop
+                    # joins it and forms a list then forms it into a string
+                    #finally it is written into the logfile and the database
+                    break
+
+                else:
+                    print("That book has been taken out by another user. Please try again later...")
+                    break
+
+        else:
+            print("That was not a valid number. Try again...")
+
+        databaseFileOpen.close()
+        logFileOpen.close()
+        break
+
+'''This is the test code'''
+
+if __name__ =="__main__":
+    while True:
         main()
-    elif x == "menu":
-        backtoMenu()
-    else:
-        print("What you entered is not an option. Please try again...")
+        x = input("What would you like to do now?\nType:\n'checkout' to remove another book"
+                        "\n'menu' to return to the main menu\n").strip().lower()
+        if x == "checkout":
+            main()
+        elif x == "menu":
+            backtoMenu()
+        else:
+            print("What you entered is not an option. Please try again...")
