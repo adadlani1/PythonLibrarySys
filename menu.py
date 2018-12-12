@@ -12,10 +12,10 @@ root = Tk()
 
 def checkout():
 
-    import checkout
+    import bookcheckout
 
     while True:
-        checkout.main()
+        bookcheckout.main()
         # after the main is run, user is asked what they would like to do next
         x = input("What would you like to do now?"
                   "\nType:"
@@ -24,11 +24,11 @@ def checkout():
         # corresponding reply from user runs specfic function in file
         
         if x == "checkout":
-            checkout.main()
+            bookcheckout.main()
 
         elif x == "menu":
             root.withdraw()
-            checkout.backtoMenu()
+            bookcheckout.backtoMenu()
 
         else:
             print("What you entered is not an option. Please try again...")
@@ -36,11 +36,11 @@ def checkout():
 
 def search():
 
-    import search2
+    import booksearch
 
     while True:
         # while loop which runs the whole system
-        search2.search()
+        booksearch.search()
         # after the main is run, user is asked what they would like to do next
         
         x = input(
@@ -51,11 +51,11 @@ def search():
         # corresponding reply from user runs specfic function in file
 
         if x == "search":
-            search2.search()
+            booksearch.search()
             
         elif x == "menu":
             root.withdraw()
-            search2.menu()
+            booksearch.menu()
 
         else:
             # if another input is made that is not search or menu, program tells
@@ -88,10 +88,10 @@ def returnBook():
 
 def weeding():
 
-    import weeding
+    import bookweed
 
     while True:
-        weeding.main()
+        bookweed.main()
         # after the main is run, user is asked what they would like to do next
         secondInput = input("If you would like to return to the menu, type 'menu'"
                             "\nOr to find another book, type 'weed'\n").lower().strip()
@@ -99,10 +99,10 @@ def weeding():
 
         if secondInput == "menu":
             root.withdraw()
-            weeding.menu()
+            bookweed.menu()
 
         elif secondInput == "weed":
-            weeding.main()
+            bookweed.main()
 
         else:
             print("What you entered is not an option. Please try again...")

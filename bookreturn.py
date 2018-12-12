@@ -33,60 +33,64 @@ If wrong ID is entered, an error message is displayed'''
 
 def main():
 
- inputID = int(input("Please enter your user ID:"))
+    inputID = int(input("Please enter your user ID:"))
 
- if 999 < inputID < 10000:
-     returnBookIDnum = input("Which book would you like to return?"
-                                                    "Please enter the id number:")
-     # user is asked what book they would like to return
-     databaseFileopen = open("Database.txt", "r")
-     databaseLines = databaseFileopen.readlines()
-     # data in database is turned into a list with each element being a book
-     numOfBooks = len(databaseLines)
-     # number of books is determined from the number of elements
-     # in the list
-     databaseLines2 = [novel.split('{') for novel in databaseLines]
-     # data in database is changed into a list of lists where each list is
-     # equal to a book
+    if 999 < inputID < 10000:
+        returnBookIDnum = input("Which book would you like to return?"
+                                                      " Please enter the id number:")
+        # user is asked what book they would like to return
+        databaseFileopen = open("Database.txt", "r")
+        databaseLines = databaseFileopen.readlines()
+        # data in database is turned into a list with each element being a book
+        numOfBooks = len(databaseLines)
+        # number of books is determined from the number of elements
+        # in the list
+        databaseLines2 = [novel.split('{') for novel in databaseLines]
+        # data in database is changed into a list of lists where each list is
+        # equal to a book
 
-     for novel in range(1, numOfBooks):
-        book = databaseLines2[novel]
-        bookID = book[0]
-        checkAvailable = book[3]
-        userID = book[4]
-        inputIDstr = str(inputID)
+        for novel in range(1, numOfBooks):
+            book = databaseLines2[novel]
+            bookID = book[0]
+            checkAvailable = book[3]
+            userID = book[4]
+            inputIDstr = str(inputID)
 
-        if bookID == returnBookIDnum and inputIDstr == userID:
-            # two conditions that need to be met in order for the book to be
-            # returned. if the name and ID match with
-            # what has been entered, the system will proceed
-            # book has to be unavailable (book[3] == N) and userID in database
-            # must match ID stored in database
-            book[3] = "Y"
-            book[4] = "0000"
-            book[5] = "----------"
-            book[6] = today
-            # the database file is updated
-            databaseLines2[novel] = book
-            # the list is overwritten in the database
-            databaseFileopen.close()
-            databaseFileReOpen = open("Database.txt", "w")
-            # database file is reopened for rewriting all of the books into it
+            if bookID == returnBookIDnum and inputIDstr == userID:
+                # two conditions that need to be met in order for the book to be
+                # returned. if the name and ID match with
+                # what has been entered, the system will proceed
+                # book has to be unavailable (book[3] == N) and userID in database
+                # must match ID stored in database
+                book[3] = "Y"
+                book[4] = "0000"
+                book[5] = "----------"
+                book[6] = today
+                # the database file is updated
+                databaseLines2[novel] = book
+                # the list is overwritten in the database
+                databaseFileopen.close()
+                databaseFileReOpen = open("Database.txt", "w")
+                # database file is reopened for rewriting all of the books into it
 
-            for line in databaseLines2:
-                # for loop to turn the list of lists into one list
-                recordString = '{'.join(line)
-                # each list is joined together
-                databaseFileReOpen.write(recordString)
-                # it is written into the database file
+                for line in databaseLines2:
+                    # for loop to turn the list of lists into one list
+                    recordString = '{'.join(line)
+                    # each list is joined together
+                    databaseFileReOpen.write(recordString)
+                    # it is written into the database file
 
-            print("The book, '" + book[1] + "', has been returned")
-            databaseFileReOpen.close()
-            # tells user that the book has been returned
-            break   
+                print("The book, '" + book[1] + "', has been returned")
+                databaseFileReOpen.close()
+                # tells user that the book has been returned
+                break
 
- else:
-     print("That is an invalid user ID. Please try again...")
+            elif checkAvailable =="Y" and bookID == returnBookIDnum:
+                print("This book is still available.")
+                break
+
+    else:
+        print("That is an invalid user ID. Please try again...")
 
 '''this function is to reopen the menu.py so that the librarian can perform another action'''
 

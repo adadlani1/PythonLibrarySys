@@ -4,3 +4,12 @@ ID{TITLE{AUTHOR{AVAILABLE?{USER{DUE{
 01{Do Androids Dream of Electric Sheep?{Philip K. Dick{1254{2018-12-09{
 01{Do Androids Dream of Electric Sheep?{Philip K. Dick{1254{2018-12-09{
 01{Do Androids Dream of Electric Sheep?{Philip K. Dick{1254{2018-12-10{
+01{Do Androids Dream of Electric Sheep?{Philip K. Dick{1266{2018-12-11{
+02{Everything I Never Told You{Celeste Ng{1234{2018-12-11{
+01{Do Androids Dream of Electric Sheep?{Philip K. Dick{1234{2018-12-11{
+08{The Curious Incident of the Dog in the Night-Time{Mark Haddon{1459{2018-12-11{
+05{Are You There, Vodka? It's Me, Chelsea{Chelsea Handler{1236{2018-12-11{
+06{The Electric Kool-Aid Acid Test{Tom Wolfe{1254{2018-12-11{
+01{DO ANDROIDS DREAM OF ELECTRIC SHEEP?{PHILIP K. DICK{1254{2018-12-12{
+05{ARE YOU THERE, VODKA? IT'S ME, CHELSEA{CHELSEA HANDLER{1307{2018-12-12{
+06{THE ELECTRIC KOOL-AID ACID TEST{TOM WOLFE{1254{2018-12-12{

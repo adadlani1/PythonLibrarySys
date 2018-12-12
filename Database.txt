@@ -1,11 +1,11 @@
 ID{TITLE{AUTHOR{AVAILABLE?{USER{DUE{LAST RETURNED 
-01{Do Androids Dream of Electric Sheep?{Philip K. Dick{Y{0000{----------{2018-12-09{
-02{Everything I Never Told You{Celeste Ng{Y{0000{----------{2019-12-04{
-03{Is Everyone Hanging Out Without Me? (and Other Concerns){Mindy Kaling{Y{0000{----------{2019-12-04{
-04{The Electric Kool-Aid Acid Test{Tom Wolfe{Y{0000{----------{2018-12-04{
-05{Are You There, Vodka? It's Me, Chelsea{Chelsea Handler{Y{0000{----------{2018-12-04{
-06{The Electric Kool-Aid Acid Test{Tom Wolfe{Y{0000{----------{2018-12-04{
-07{The Devil Wears Prada{Lauren Weisberger{Y{0000{----------{2018-12-04{
-08{The Curious Incident of the Dog in the Night-Time{Mark Haddon{Y{0000{----------{2018-12-04{
-09{How to Win Friends and Influence People{Dale Carnegie{Y{0000{----------{2018-12-04{
-10{Do Androids Dream of Electric Sheep?{Philip K. Dick{Y{0000{----------{2018-12-04
+{01{DO ANDROIDS DREAM OF ELECTRIC SHEEP?{PHILIP K. DICK{Y{0000{----------{2018-12-12{
+{02{EVERYTHING I NEVER TOLD YOU{CELESTE NG{Y{0000{----------{2018-12-11{
+{03{IS EVERYONE HANGING OUT WITHOUT ME? (AND OTHER CONCERNS){MINDY KALING{Y{0000{----------{2019-12-04{
+{04{THE ELECTRIC KOOL-AID ACID TEST{TOM WOLFE{Y{0000{----------{2018-12-04{
+{05{ARE YOU THERE, VODKA? IT'S ME, CHELSEA{CHELSEA HANDLER{Y{0000{----------{2018-12-12{
+{06{THE ELECTRIC KOOL-AID ACID TEST{TOM WOLFE{Y{0000{----------{2018-12-12{
+{07{THE DEVIL WEARS PRADA{LAUREN WEISBERGER{Y{0000{----------{2018-12-04{
+{08{THE CURIOUS INCIDENT OF THE DOG IN THE NIGHT-TIME{MARK HADDON{Y{0000{----------{2018-12-04{
+{09{HOW TO WIN FRIENDS AND INFLUENCE PEOPLE{DALE CARNEGIE{Y{0000{----------{2018-12-04{
+{10{DO ANDROIDS DREAM OF ELECTRIC SHEEP?{PHILIP K. DICK{Y{0000{----------{2018-12-04
